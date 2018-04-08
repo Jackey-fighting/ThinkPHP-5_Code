@@ -31,9 +31,19 @@ Route::get('api/duanxin', 'api/duanxin.DuanXin/SendDuanXin');
 //登录的路由
 Route::post('api/:ver/login', 'api/:ver.Login/save');
 //test
-Route::post('api/:ver/test', 'api/:ver.User/test');
+
+Route::resource('api/:ver/user', 'api/:ver.User');
+Route::post('api/:ver/logout', 'api/:ver.Login/logout');
+
+//点赞
+Route::post('api/:ver/upvote', 'api/:ver.upvote/save');
+Route::delete('api/:ver/delete', 'api/:ver.upvote/delete');//取消点赞
+Route::get('api/:ver/upvote/:id', 'api/:ver.upvote/read');//获取是否已经被点赞过来让心变红
+//Route::post('api/:ver/comment', 'api/:ver.comment/save');//评论文章
+Route::post('api/:ver/comment/read', 'api/:ver.comment/read');
 
 
+//图片上传 http->php
 return [
     '__pattern__' => [
         'name' => '\w+',

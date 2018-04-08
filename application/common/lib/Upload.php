@@ -29,7 +29,7 @@ class Upload{
 		//生成上传的token
 		$token = $auth->uploadToken($config['bucket']);
 
-		//上传到七牛后保存文件名
+		//上传到
 		$key = date('Y')."/".date('m')."/".substr(md5($file),0,5).date('YmdHis').rand(0,9999).'.'.$ext;
 		
 		//初始化UploadManager类
@@ -39,7 +39,7 @@ class Upload{
 		if ($err !== null) {
 			return null;
 		}else{
-			return $key;
+			return $key;//七牛保存的文件名
 		}
 	}
 }
